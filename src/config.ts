@@ -11,6 +11,10 @@ const schema = z.object({
   OPENAI_API_KEY: z.string().optional(),
   NEBIUS_API_KEY: z.string().optional(),
 
+  GEMINI_MODEL: z.string().default("gemini-2.5-flash"),
+  OPENAI_MODEL: z.string().default("gpt-4o"),
+  NEBIUS_MODEL: z.string().default("nvidia/nemotron-3-super-120b-a12b"),
+
   OLLAMA_BASE_URL: z.string().url().default("http://localhost:11434"),
   OLLAMA_MODEL: z.string().default("llama3.2"),
 

@@ -7,8 +7,16 @@ import { config, resolveProvider } from "../config";
 import type { ProviderName } from "../types";
 
 const { provider: activeProvider, source } = resolveProvider(config);
+
+const MODEL_STRINGS: Record<ProviderName, string> = {
+  gemini: config.GEMINI_MODEL,
+  openai: config.OPENAI_MODEL,
+  nebius: config.NEBIUS_MODEL,
+  ollama: config.OLLAMA_MODEL,
+};
+
 console.log(
-  `[info] provider: ${activeProvider} (${source === "explicit" ? "DEFAULT_PROVIDER" : "auto-detected"})`
+  `[info] provider: ${activeProvider} (${source === "explicit" ? "DEFAULT_PROVIDER" : "auto-detected"}) model: ${MODEL_STRINGS[activeProvider]}`
 );
 
 const gemini = createGoogleGenerativeAI({
@@ -29,10 +37,9 @@ const nebius = createOpenAICompatible({
 const ollamaClient = createOllama({ baseURL: config.OLLAMA_BASE_URL });
 
 const MODELS: Record<ProviderName, LanguageModel> = {
-  //gemini: gemini("gemini-2.5-flash-lite"),
-  gemini: gemini("gemini-2.5-flash"),
-  openai: openai("gpt-4o"),
-  nebius: nebius("nvidia/nemotron-3-super-120b-a12b"),
+  gemini: gemini(config.GEMINI_MODEL),
+  openai: openai(config.OPENAI_MODEL),
+  nebius: nebius(config.NEBIUS_MODEL),
   ollama: ollamaClient(config.OLLAMA_MODEL),
 };
 
