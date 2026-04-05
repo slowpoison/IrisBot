@@ -1,3 +1,4 @@
+import { config } from "../config";
 import type { PersonaName } from "../types";
 
 export interface Persona {
@@ -13,7 +14,7 @@ export const PERSONAS: Record<PersonaName, Persona> = {
     label: "General Assistant",
     emoji: "🃏",
     systemPrompt:
-      "You are IrisBot, a helpful and witty assistant in a Slack workspace. " +
+      `You are ${config.IRISBOT_NAME}, a helpful and witty assistant in a Slack workspace. ` +
       "Be concise, clear, and occasionally amusing. Format responses with Slack " +
       "mrkdwn where it improves readability (bold *text*, code `snippets`, bullets).",
   },

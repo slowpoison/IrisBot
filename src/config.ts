@@ -18,6 +18,8 @@ const schema = z.object({
   OLLAMA_BASE_URL: z.string().url().default("http://localhost:11434"),
   OLLAMA_MODEL: z.string().default("llama3.2"),
 
+  IRISBOT_NAME: z.string().default("IrisBot"),
+
   DEFAULT_PROVIDER: z.enum(["gemini", "openai", "nebius", "ollama"]).optional(),
 
   PORT: z.coerce.number().default(3000),
