@@ -17,7 +17,7 @@
     "start": "node dist/index.js",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "pnpm build",
-    "publish": "pnpm publish --access public"
+    "release": "pnpm publish --access public"
   },
   "dependencies": {
     "@ai-sdk/google": "^3.0.58",
